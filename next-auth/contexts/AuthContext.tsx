@@ -46,7 +46,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
        maxAge: 60*60*24*30, //tempo que o cookie fica salvo
        path: '/' //qualquer endereço da aplicação tem acesso ao cookie
       })
-      setCookie(undefined, "Auth.refreshtoken", refresToken)
+      setCookie(undefined, "Auth.refreshtoken", refresToken, {
+       maxAge: 60*60*24*30, //tempo que o cookie fica salvo
+       path: '/' //qualquer endereço da aplicação tem acesso ao cookie
+      })
 
       setUser({
         email,
