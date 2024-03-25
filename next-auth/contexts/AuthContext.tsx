@@ -1,32 +1,68 @@
+"use client"
+import { api } from "@/services/api"
+import { useRouter } from "next/navigation"
+import {setCookie} from "nookies"
+import { createContext, ReactNode, useState } from "react"
 
-import { createContext, ReactNode } from "react"
-
-type signInCredentials = {
-email: string;
-password: string;
+type User = {
+  email: string
+  permissions: string[]
+  roles: string[]
 }
 
-type AuthConstextData= {
- signIn(credentials: signInCredentials): Promise<void>
- isAuthenticated: boolean;
+type SignInCredentials = {
+  email: string
+  password: string
 }
 
-type AuthProviderProps= {
- children: ReactNode;
+type AuthConstextData = {
+  signIn(credentials: SignInCredentials): Promise<void>
+  isAuthenticated: boolean
+  user: User | null;
 }
 
-const AuthContext= createContext({} as AuthConstextData)
+type AuthProviderProps = {
+  children: ReactNode
+}
 
-export function AuthProvider({children}: AuthProviderProps){
- const isAuthenticated = false //se o user está ou não autenticado
+export const AuthContext = createContext({} as AuthConstextData)
 
- async function signIn({email, password}:signInCredentials){ //para dizer oq se espera que o user coloque na autenticação
-  console.log({email, password})
- }
+export function AuthProvider({ children }: AuthProviderProps) {
+  const [user, setUser] = useState<User | null>(null)
+  const isAuthenticated = !!user //se o user está ou não autenticado
+  const router = useRouter()
 
- return (
-  <AuthContext.Provider value={{signIn, isAuthenticated}}>
-  {children}
-  </AuthContext.Provider>
+  async function signIn({ email, password }: SignInCredentials) {
+    //para dizer oq se espera que o user coloque na autenticação
+    try {
+      const response = await api.post("sessions", {
+        email,
+        password,
+      })
+
+      const { token, refresToken, permissions, roles } = response.data
+
+      setCookie(undefined,'Auth.token', token, {
+       maxAge: 60*60*24*30, //tempo que o cookie fica salvo
+       path: '/' //qualquer endereço da aplicação tem acesso ao cookie
+      })
+      setCookie(undefined, "Auth.refreshtoken", refresToken)
+
+      setUser({
+        email,
+        permissions,
+        roles,
+      })
+      router.push("/dashboard")
+
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  return (
+    <AuthContext.Provider value={{ signIn, isAuthenticated, user }}>
+      {children}
+    </AuthContext.Provider>
   )
 }
