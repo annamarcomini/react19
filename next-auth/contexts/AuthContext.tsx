@@ -1,8 +1,8 @@
 "use client"
 import { api } from "@/services/api"
 import { useRouter } from "next/navigation"
-import {setCookie} from "nookies"
-import { createContext, ReactNode, useState } from "react"
+import {setCookie, parseCookies} from "nookies"
+import { createContext, ReactNode, useEffect, useState } from "react"
 
 type User = {
   email: string
@@ -32,6 +32,18 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const isAuthenticated = !!user //se o user está ou não autenticado
   const router = useRouter()
 
+  useEffect(()=> {
+  const {'Auth.token': token} = parseCookies()
+
+  if(token){
+    api.get('/me').then(response=> {
+      const {email, permissions, roles}= response.data  //rota me retorna as informações do user logado
+
+      setUser({email, permissions, roles})
+    })
+  }
+  }, [])
+
   async function signIn({ email, password }: SignInCredentials) {
     //para dizer oq se espera que o user coloque na autenticação
     try {
@@ -40,13 +52,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
         password,
       })
 
-      const { token, refresToken, permissions, roles } = response.data
+      const { token, refreshToken, permissions, roles } = response.data
 
       setCookie(undefined,'Auth.token', token, {
        maxAge: 60*60*24*30, //tempo que o cookie fica salvo
        path: '/' //qualquer endereço da aplicação tem acesso ao cookie
       })
-      setCookie(undefined, "Auth.refreshtoken", refresToken, {
+      setCookie(undefined, 'Auth.refreshToken', refreshToken, {
        maxAge: 60*60*24*30, //tempo que o cookie fica salvo
        path: '/' //qualquer endereço da aplicação tem acesso ao cookie
       })
@@ -56,6 +68,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
         permissions,
         roles,
       })
+
+     api.defaults.headers['Authorization']= `Bearer ${token}`;
+
       router.push("/dashboard")
 
     } catch (err) {
