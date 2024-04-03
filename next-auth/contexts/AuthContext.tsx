@@ -32,7 +32,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const isAuthenticated = !!user //se o user está ou não autenticado
   const router = useRouter()
 
-  useEffect(()=> {
+  useEffect(()=> { 
   const {'Auth.token': token} = parseCookies()
 
   if(token){
