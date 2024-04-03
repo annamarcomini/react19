@@ -5,7 +5,6 @@ import styles from "./page.module.css"
 import { api } from "@/services/api"
 
 export default function Dashboard() {
-  // Verifica se o código está sendo executado do lado do cliente antes de usar o contexto
 
   const {user} = useContext(AuthContext)
 
