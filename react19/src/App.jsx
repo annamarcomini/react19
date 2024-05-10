@@ -1,5 +1,6 @@
 import './App.css'
 import ParentComponent from './components/ParentComponent'
+import PostItems from './components/PostItems'
 import UserForm from './components/UserForm'
 
 function App() {
@@ -13,6 +14,8 @@ function App() {
       <UserForm />
       <h1>2 - Ref as props</h1>
       <ParentComponent />
+      <h1>3 - Use to load data</h1>
+      <PostItems/>
     </>
   )
 }
