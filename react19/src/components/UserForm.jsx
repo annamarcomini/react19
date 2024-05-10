@@ -9,11 +9,17 @@ const UserForm = () => {
  }
 
  return (
-  <div>
-   <form action={handleAddUser}>
-    <button type='submit'>Send</button>
-   </form>
-  </div>
+   <div>
+     <form action={handleAddUser}>
+       <div>
+         <input type="text" name="name" placeholder="Type your name" />
+       </div>
+       <div>
+         <input type="text" name="email" placeholder="Type your email" />
+       </div>
+       <button type="submit">Send</button>
+     </form>
+   </div>
  )
 }
 
