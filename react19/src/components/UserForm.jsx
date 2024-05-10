@@ -5,7 +5,10 @@ const UserForm = () => {
 
 
  async function handleAddUser(formData) {
-  console.log("form sent"); "form sent"
+  const name = formData.get("name");
+  const email = formData.get("email");
+
+  console.log(name, email);
  }
 
  return (
