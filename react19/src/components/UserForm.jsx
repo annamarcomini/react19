@@ -4,11 +4,17 @@ const UserForm = () => {
  const [users, setUsers] = useState([]);
 
 
+ async function handleAddUser(formData) {
+  
+ }
 
- 
  return (
-  <div>UserForm</div>
+  <div>
+   <form action={handleAddUser}>
+    <button type='submit'>Send</button>
+   </form>
+  </div>
  )
 }
 
-export default Userform
+export default UserForm
