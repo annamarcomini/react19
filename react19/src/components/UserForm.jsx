@@ -8,7 +8,7 @@ const UserForm = () => {
   const name = formData.get("name");
   const email = formData.get("email");
 
-  console.log(name, email);
+  setUsers((prev) => [...prev, { name, email }]);
  }
 
  return (
@@ -21,7 +21,13 @@ const UserForm = () => {
          <input type="text" name="email" placeholder="Type your email" />
        </div>
        <button type="submit">Send</button>
-     </form>
+   </form>
+   <h3>Users</h3>
+   <ul>
+    {users.map((user) => (
+     <li key={index}>{user.name} - {user.email}</li>
+    ))}
+   </ul>
    </div>
  )
 }
