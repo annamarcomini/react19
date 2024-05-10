@@ -1,11 +1,22 @@
 import {useRef, useEffect} from "react"
+import InputField from "./InputField";
 
 const ParentComponent = () => {
  const inputRef = useRef(null);
-
+ 
+ useEffect(() => {
+  
+  if (inputRef.current) {
+   inputRef.current.focus();
+  }
+   
+ },[])
   
  return (
-  <div>Parent Component</div>
+  <div>
+   <InputField/>
+  </div>
  )
 };
-export default ParentComponent
+
+export default ParentComponent;
