@@ -1,4 +1,4 @@
-import {use} from "react"
+import {use, suspense, Suspense} from "react"
 
 const fetchPosts = async () => {
   const response = await fetch("https://jsonplaceholder.typicode.com/posts")
@@ -15,8 +15,15 @@ const PostItems = () => {
     <li key={post.id}>{post.title}</li>
    ))}
   </ul>
-  
   </div>
 }
 
-export default PostItems
+const Posts = () => {
+ //to tell when posts are ready to be used
+ return (
+   <Suspense fallback="Loading Posts">
+     <PostItems />;
+   </Suspense>
+ )
+}
+export default Posts;
