@@ -7,7 +7,7 @@ const ParentComponent = () => {
  useEffect(() => {
   
   if (inputRef.current) {
-   inputRef.current.focus();
+   inputRef.current.focus(); //focusing straight to this input when pages reload
   }
    
  },[])
