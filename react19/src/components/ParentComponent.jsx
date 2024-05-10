@@ -14,7 +14,7 @@ const ParentComponent = () => {
   
  return (
   <div>
-   <InputField/>
+   <InputField ref={inputRef} placeholder="Type something here..."/>
   </div>
  )
 };
