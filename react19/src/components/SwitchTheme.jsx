@@ -4,9 +4,12 @@ import { ThemeContext } from "../Context/ThemeContext";
 export default function SwitchTheme() {
  const { theme, toggleTheme } = use(ThemeContext);
 
+  const handleThemeChange = () => {
+    toggleTheme()
+  }
  return (
-  <button onClick={toggleTheme}>
-   Switch theme to {theme === "claro" ? "escuro" : "claro"}
+  <button onClick={handleThemeChange}>
+   Switch theme to {theme === "light" ? "dark" : "light"}
   </button>
  );
 };
