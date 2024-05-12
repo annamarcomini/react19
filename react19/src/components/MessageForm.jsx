@@ -1,10 +1,12 @@
 import { useOptimistic } from 'react';
 
-export default function MessageForm({ messages }) {
+export default function MessageForm({ messages, sendMessage }) {
  const [optimisticMessages, addOptimisticMessages] = useOptimistic(messages,(state, newMessage)=> [...state, {text: newMessage, sending: true}])
 
- function formAction(formData) {
- 
+ async function formAction(formData) {
+  addOptimisticMessages(formData.get("message"))
+  
+  await sendMessage(formData)
  }
 
  return (
