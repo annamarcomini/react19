@@ -8,7 +8,13 @@ export default function MessageForm({ messages }) {
  }
 
  return (
-   <div>
+  <div>
+   {optimisticMessages.map((message, index) => (
+    <div key={index}>
+     {message.text
+     }
+    </div>
+   ))}
      <form action={formAction}>
        <input type="text" name="message" placeholder="Type something here..." />
        <button type="submit">Send</button>
