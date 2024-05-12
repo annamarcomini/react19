@@ -6,6 +6,8 @@ import SwitchTheme from './components/SwitchTheme';
 import { ThemeContext } from "./Context/ThemeContext"
 import { use } from "react"
 import FormStatus from './components/FormStatus';
+import FormState from "./components/FormState"
+
 
 function App() {
   const { theme, toggleTheme } = use(ThemeContext)
