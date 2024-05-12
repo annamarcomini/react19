@@ -5,7 +5,20 @@ export default function FormState() {
  const validateUser = (prevState,formData) => {
  
   const name = formData.get("userName");
-  console.log(name)
+
+  if (name) {
+   console.log(name)
+   return {
+    success: true,
+    text: `Bem vindo, ${name}`,
+   }
+  } else {
+   return {
+    success: false,
+    text: "User not found.",
+   }
+  }
+  
  };
 
  const [message, formAction] = useFormState(validateUser, null);
