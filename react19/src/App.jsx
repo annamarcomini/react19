@@ -11,7 +11,7 @@ function App() {
 
 
   return (
-    <main className=''>
+    <main className="main">
       <div className={theme}>
         <title>Let´s code- Home</title>
         <meta name="description" content="Learn coding with me react 19" />

@@ -1,8 +1,7 @@
-#root {
-  max-width: 2000px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.main {
+  width: 2000px;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo {
