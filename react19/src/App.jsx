@@ -7,6 +7,7 @@ import { ThemeContext } from "./Context/ThemeContext"
 import { use } from "react"
 import FormStatus from './components/FormStatus';
 import FormState from "./components/FormState"
+import Message from './components/Message';
 
 
 function App() {
@@ -28,8 +29,10 @@ function App() {
         <SwitchTheme toggleTheme={toggleTheme} />
         <h1>5 - useFormStatus to see the status of the form sending</h1>
         <FormStatus />
-        <h1>6- useFormState updates based on the user response</h1>
-        <FormState/>
+        <h1>6 - useFormState updates based on the user response</h1>
+        <FormState />
+        <h1>7 - Optimistic: optimize the response to user till the updates come</h1>
+        <Message/>
       </div>
     </main>
   )
