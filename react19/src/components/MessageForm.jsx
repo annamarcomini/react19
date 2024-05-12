@@ -11,8 +11,7 @@ export default function MessageForm({ messages }) {
   <div>
    {optimisticMessages.map((message, index) => (
     <div key={index}>
-     {message.text
-     }
+     {message.text} {message.sending && <small>(Sending...)</small>}
     </div>
    ))}
      <form action={formAction}>
