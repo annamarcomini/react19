@@ -25,7 +25,9 @@ function App() {
         <h1>4 - use to apply contexts</h1>
         <SwitchTheme toggleTheme={toggleTheme} />
         <h1>5 - useFormStatus to see the status of the form sending</h1>
-        <FormStatus/>
+        <FormStatus />
+        <h1>6- useFormState updates based on the user response</h1>
+        <FormState/>
       </div>
     </main>
   )
