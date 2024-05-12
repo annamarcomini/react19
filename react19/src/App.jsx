@@ -5,7 +5,7 @@ import UserForm from './components/UserForm';
 import SwitchTheme from './components/SwitchTheme';
 import { ThemeContext } from "./Context/ThemeContext"
 import { use } from "react"
-import FormStatus from './components/formStatus';
+import FormStatus from './components/FormStatus';
 
 function App() {
   const { theme, toggleTheme } = use(ThemeContext)
