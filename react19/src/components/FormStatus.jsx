@@ -1,8 +1,10 @@
 import SubmitFormButton from "./SubmitFormButton"
 
 export default function FormStatus() {
- const formAction = async () => {
- 
+ const formAction = async (formData) => {
+  await new Promise((resolve) => setTimeout(resolve, 3000))
+  
+  alert("E-mail received: " + formData.get("email"))
  }
  
  return (
