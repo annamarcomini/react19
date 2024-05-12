@@ -5,6 +5,7 @@ import UserForm from './components/UserForm';
 import SwitchTheme from './components/SwitchTheme';
 import { ThemeContext } from "./Context/ThemeContext"
 import { use } from "react"
+import FormStatus from './components/formStatus';
 
 function App() {
   const { theme, toggleTheme } = use(ThemeContext)
@@ -23,6 +24,8 @@ function App() {
         <PostItems />
         <h1>4 - use to apply contexts</h1>
         <SwitchTheme toggleTheme={toggleTheme} />
+        <h1>5 - useFormStatus to see the status of the form sending</h1>
+        <FormStatus/>
       </div>
     </main>
   )
