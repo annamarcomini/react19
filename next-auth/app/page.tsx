@@ -1,6 +1,7 @@
 "use client"
 import { AuthContext } from "@/contexts/AuthContext"
 import { FormEvent, useContext, useState } from "react"
+import {FaUser, FaLock} from 'react-icons/fa'
 import styles from "./page.module.css"
 
 export default function Home() {
@@ -31,6 +32,7 @@ export default function Home() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        <FaUser className="icon"/>
       </div>
       <div>
         <input
@@ -39,6 +41,7 @@ export default function Home() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <FaLock className="icon"/>
       </div>
       <button type="submit">Enter</button>
     </form>
