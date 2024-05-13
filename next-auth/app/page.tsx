@@ -24,18 +24,22 @@ export default function Home() {
   return (
     <form onSubmit={handleSubmit} className={styles.container}>
       <h1>Access the System</h1>
-      <input
-        type="email"
-        placeholder="Type your E-mail!"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Type your password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+      <div>
+        <input
+          type="email"
+          placeholder="Type your E-mail!"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
+      <div>
+        <input
+          type="password"
+          placeholder="Type your password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </div>
       <button type="submit">Enter</button>
     </form>
   )
