@@ -23,17 +23,20 @@ export default function Home() {
   }
   return (
     <form onSubmit={handleSubmit} className={styles.container}>
+      <h1>Access the System</h1>
       <input
         type="email"
+        placeholder="Type your E-mail!"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
       <input
         type="password"
+        placeholder="Type your password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button type="submit">Entrar</button>
+      <button type="submit">Enter</button>
     </form>
   )
 }
