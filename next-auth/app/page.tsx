@@ -23,27 +23,29 @@ export default function Home() {
   
   }
   return (
-    <form onSubmit={handleSubmit} className={styles.container}>
-      <h1>Access the System</h1>
-      <div>
-        <input
-          type="email"
-          placeholder="Type your E-mail!"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <FaUser className="icon"/>
-      </div>
-      <div>
-        <input
-          type="password"
-          placeholder="Type your password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <FaLock className="icon"/>
-      </div>
-      <button type="submit">Enter</button>
-    </form>
+    <div className={styles.container}>
+      <form onSubmit={handleSubmit} className={styles.content}>
+        <h1>Access the System</h1>
+        <div>
+          <input
+            type="email"
+            placeholder="Type your E-mail!"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <FaUser className="icon" />
+        </div>
+        <div>
+          <input
+            type="password"
+            placeholder="Type your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <FaLock className="icon" />
+        </div>
+        <button type="submit">Enter</button>
+      </form>
+    </div>
   )
 }
