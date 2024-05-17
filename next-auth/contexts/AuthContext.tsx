@@ -15,7 +15,7 @@ type SignInCredentials = {
   password: string
 }
 
-type AuthConstextData = {
+type AuthContextData = {
   signIn(credentials: SignInCredentials): Promise<void>
   isAuthenticated: boolean
   user: User | null;
@@ -25,7 +25,7 @@ type AuthProviderProps = {
   children: ReactNode
 }
 
-export const AuthContext = createContext({} as AuthConstextData)
+export const AuthContext = createContext({} as AuthContextData)
 
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null)
