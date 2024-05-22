@@ -1,26 +1,24 @@
 "use client"
 import { AuthContext } from "@/contexts/AuthContext"
 import { FormEvent, useContext, useState } from "react"
-import {FaUser, FaLock} from 'react-icons/fa'
+import { FaUser, FaLock } from "react-icons/fa"
 import styles from "./page.module.css"
 
 export default function Home() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  
 
-  const{signIn}= useContext(AuthContext)
+  const { signIn } = useContext(AuthContext)
 
-  async function handleSubmit(event: FormEvent){
+  async function handleSubmit(event: FormEvent) {
     event.preventDefault()
 
-    const data ={
+    const data = {
       email,
       password,
     }
 
     await signIn(data)
-  
   }
   return (
     <div className={styles.container}>
